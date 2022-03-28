@@ -1,7 +1,12 @@
 <template>
   <n-space justify="center">
     <div v-for="(btn, index) in buttons" :key="index">
-      <n-button size="large" :key="index" v-on:click="setSeek(btn)">
+      <n-button
+        :focusable="false"
+        size="large"
+        :key="index"
+        v-on:click="setSeek(btn)"
+      >
         {{ btn.caption }}
       </n-button>
     </div>

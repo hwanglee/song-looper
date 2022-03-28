@@ -2,6 +2,7 @@
   <n-space justify="center">
     <div v-for="(btn, index) in buttons" :key="index">
       <n-button
+        :focusable="false"
         size="large"
         :key="index"
         :pressed="btn.state"

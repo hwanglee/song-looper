@@ -1,6 +1,6 @@
 <template>
   <n-form-item label="Select File">
-    <n-button size="large" @click="test">Browse</n-button>
+    <n-button :focusable="false" size="large" @click="test">Browse</n-button>
   </n-form-item>
   <input
     type="file"
