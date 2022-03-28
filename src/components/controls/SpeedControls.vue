@@ -5,7 +5,8 @@
         :focusable="false"
         size="large"
         :key="index"
-        :pressed="btn.state"
+        :type="btn.state ? 'primary' : 'default'"
+        :ghost="btn.state"
         v-on:click="setButton(btn)"
       >
         {{ btn.speed }}x
@@ -16,20 +17,21 @@
 
 <script setup lang="ts">
 import { NButton, NSpace } from "naive-ui";
+import { ref } from "vue";
 
 interface Button {
   speed: number;
   state: boolean;
 }
 
-const buttons: Button[] = [
+const buttons = ref([
   { speed: 0.5, state: false },
   { speed: 0.75, state: false },
   { speed: 1, state: true },
-];
+]);
 
 const setButton = (button: Button) => {
-  buttons.forEach((btn) => {
+  buttons.value.forEach((btn) => {
     btn.state = btn == button;
   });
 };
