@@ -41,6 +41,6 @@ const background = {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0vh 10vh 0vh 10vh;
+  padding: 0vh 30vh 0vh 30vh;
 }
 </style>

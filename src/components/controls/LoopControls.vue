@@ -1,8 +1,9 @@
 <template>
-  <n-space justify="center">
+  <n-space :wrap="false">
     <n-form-item label="Loop">
       <n-switch size="large" />
     </n-form-item>
+    <n-space />
     <n-form-item label="Start">
       <n-input-group>
         <n-input size="large" default-value="0:00" />
