@@ -11,13 +11,19 @@
             v-model:value="remoteUrl"
             type="text"
           />
-          <n-button size="large" :onclick="remoteFileHandler">Submit</n-button>
+          <n-button
+            :focusable="false"
+            size="large"
+            :onclick="remoteFileHandler"
+          >
+            Submit
+          </n-button>
         </n-input-group>
       </n-form-item>
     </n-space>
     <Player theme="dark">
       <Audio>
-        <source :data-src="src" src="" />
+        <source :data-src="dataSrc" src="" />
       </Audio>
       <DefaultUi />
     </Player>
@@ -34,7 +40,7 @@ onMounted(() => {
   remoteFileHandler();
 });
 
-const src = ref("");
+const dataSrc = ref("");
 const songTitle = ref("");
 const remoteUrl = ref(
   "https://ia801402.us.archive.org/26/items/ttb2022-03-26.mk41v.edtyre/ttb2022-03-26.mk41v.edtyre.s2.t01.mp3"
@@ -43,8 +49,9 @@ const remoteUrl = ref(
 const remoteFileHandler = async () => {
   try {
     const res = await fetch(remoteUrl.value);
+    console.log(res);
     const blob = await res.blob();
-    const file = new File([blob], "untitled", { type: blob.type });
+    const file = new File([blob], "Untitled", { type: blob.type });
 
     handleFile(file);
   } catch (e) {
@@ -57,7 +64,7 @@ const localFileHandler = (event: Event) => {
   const file = (target.files as FileList)[0];
 
   remoteUrl.value = "";
-  src.value = "";
+  dataSrc.value = "";
 
   handleFile(file);
 };
@@ -69,7 +76,7 @@ const handleFile = (file: File) => {
     const base64data = reader.result;
 
     if (base64data) {
-      src.value = base64data.toString();
+      dataSrc.value = base64data.toString();
       songTitle.value = file.name;
     }
   };

@@ -1,5 +1,6 @@
 <template>
   <n-button
+    :focusable="false"
     size="large"
     block
     v-on:click="toggleIsPlaying()"
