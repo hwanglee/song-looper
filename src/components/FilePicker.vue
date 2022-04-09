@@ -21,20 +21,15 @@
         </n-input-group>
       </n-form-item>
     </n-space>
-    <Player theme="dark">
-      <Audio>
-        <source :data-src="dataSrc" src="" />
-      </Audio>
-      <DefaultUi />
-    </Player>
+    <AudioPlayer :data-src="dataSrc" />
   </n-space>
 </template>
 
 <script setup lang="ts">
 import { NSpace, NH1, NFormItem, NButton, NInput, NInputGroup } from "naive-ui";
-import { Player, DefaultUi, Audio } from "@vime/vue-next";
 import FileInput from "./FileInput.vue";
 import { onMounted, ref } from "vue";
+import AudioPlayer from "./AudioPlayer.vue";
 
 onMounted(() => {
   remoteFileHandler();
@@ -70,15 +65,8 @@ const localFileHandler = (event: Event) => {
 };
 
 const handleFile = (file: File) => {
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onloadend = () => {
-    const base64data = reader.result;
-
-    if (base64data) {
-      dataSrc.value = base64data.toString();
-      songTitle.value = file.name;
-    }
-  };
+  const url = URL.createObjectURL(file);
+  dataSrc.value = url;
+  songTitle.value = file.name;
 };
 </script>
