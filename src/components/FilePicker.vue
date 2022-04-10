@@ -2,7 +2,7 @@
   <n-space justify="space-around" size="large" vertical id="filepicker">
     <n-h1>{{ songTitle }}</n-h1>
     <n-space>
-      <FileInput :change="localFileHandler" />
+      <FileInput @file-change="localFileHandler" />
       <n-form-item label="URL">
         <n-input-group>
           <n-input
@@ -54,10 +54,7 @@ const remoteFileHandler = async () => {
   }
 };
 
-const localFileHandler = (event: Event) => {
-  const target = event.target as HTMLInputElement;
-  const file = (target.files as FileList)[0];
-
+const localFileHandler = (file: File) => {
   remoteUrl.value = "";
   dataSrc.value = "";
 

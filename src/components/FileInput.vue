@@ -1,6 +1,8 @@
 <template>
   <n-form-item label="Select File">
-    <n-button :focusable="false" size="large" @click="test">Browse</n-button>
+    <n-button :focusable="false" size="large" @click="clickInput">
+      Browse
+    </n-button>
   </n-form-item>
   <input
     type="file"
@@ -8,7 +10,7 @@
     name="song"
     accept="mp3"
     ref="input"
-    @change="props.change"
+    @change="onChange"
     style="display: none"
   />
 </template>
@@ -17,13 +19,20 @@
 import { NButton, NFormItem } from "naive-ui";
 import { ref } from "vue";
 
-const props = defineProps<{
-  change: (event: Event) => void;
+const emit = defineEmits<{
+  (e: "file-change", file: File): void;
 }>();
 
 const input = ref<HTMLElement | undefined>(undefined);
 
-const test = () => {
+const clickInput = () => {
   input.value?.click();
+};
+
+const onChange = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  const file = (target.files as FileList)[0];
+
+  emit("file-change", file);
 };
 </script>
