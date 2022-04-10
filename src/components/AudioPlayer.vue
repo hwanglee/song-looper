@@ -1,5 +1,11 @@
 <template>
-  <Player theme="dark" @vmCurrentTimeChange="onTimeChange" :current-time="time">
+  <Player
+    theme="dark"
+    @vmCurrentTimeChange="onTimeChange"
+    @vmPausedChange="onPausedChange"
+    :current-time="time"
+    :paused="!audioStore.isPlaying"
+  >
     <Audio>
       <source :data-src="props.dataSrc" />
     </Audio>
@@ -10,7 +16,9 @@
 <script setup lang="ts">
 import { Player, DefaultUi, Audio } from "@vime/vue-next";
 import { ref } from "vue";
+import { useAudioStore } from "../stores/audio";
 
+const audioStore = useAudioStore();
 const time = ref(0);
 
 const props = defineProps<{
@@ -19,6 +27,10 @@ const props = defineProps<{
 
 const onTimeChange = (event: CustomEvent<number>) => {
   time.value = Number(event);
-  console.log(time.value);
+};
+
+const onPausedChange = (event: CustomEvent<boolean>) => {
+  const isPaused = Boolean(event);
+  audioStore.setIsPlaying(!isPaused);
 };
 </script>

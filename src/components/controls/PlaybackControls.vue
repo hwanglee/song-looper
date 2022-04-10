@@ -4,20 +4,20 @@
     size="large"
     block
     v-on:click="toggleIsPlaying()"
-    v-bind:pressed="isPlaying"
+    v-bind:pressed="audioStore.isPlaying"
   >
-    {{ isPlaying ? "Pause" : "Play" }}
+    {{ audioStore.isPlaying ? "Pause" : "Play" }}
   </n-button>
 </template>
 
 <script setup lang="ts">
 import { NButton } from "naive-ui";
-import { ref } from "vue";
+import { useAudioStore } from "../../stores/audio";
 
-const isPlaying = ref(false);
+const audioStore = useAudioStore();
 
 const toggleIsPlaying = () => {
-  console.log("is playing");
-  isPlaying.value = !isPlaying.value;
+  const isPlaying = audioStore.isPlaying;
+  audioStore.setIsPlaying(!isPlaying);
 };
 </script>
