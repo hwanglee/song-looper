@@ -5,7 +5,7 @@
         :focusable="false"
         size="large"
         :key="index"
-        v-on:click="setSeek(btn)"
+        @click="setSeek(btn)"
       >
         {{ btn.caption }}
       </n-button>
