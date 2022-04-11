@@ -9,7 +9,7 @@
           <n-space vertical>
             <LoopControls />
             <PositionControls />
-            <SpeedControls />
+            <PlaybackRateControls />
             <PlaybackControls />
           </n-space>
         </n-gi>
@@ -23,7 +23,7 @@ import { NGrid, NSpace, NGi, NConfigProvider } from "naive-ui";
 import { useOsTheme, darkTheme } from "naive-ui";
 import FilePicker from "./components/FilePicker.vue";
 import PositionControls from "./components/controls/PositionControls.vue";
-import SpeedControls from "./components/controls/SpeedControls.vue";
+import PlaybackRateControls from "./components/controls/PlaybackRateControls.vue";
 import PlaybackControls from "./components/controls/PlaybackControls.vue";
 import LoopControls from "./components/controls/LoopControls.vue";
 

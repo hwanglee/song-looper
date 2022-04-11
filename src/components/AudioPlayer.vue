@@ -5,6 +5,7 @@
     @vmPausedChange="onPausedChange"
     :current-time="time"
     :paused="!audioStore.isPlaying"
+    :playback-rate="audioStore.playbackRate"
   >
     <Audio>
       <source :data-src="props.dataSrc" />

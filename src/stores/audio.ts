@@ -6,11 +6,15 @@ export const useAudioStore = defineStore({
     isPlaying: false,
     currentTime: 0,
     isLooping: false,
+    playbackRate: 1,
   }),
   getters: {},
   actions: {
     setIsPlaying(isPlaying: boolean) {
       this.isPlaying = isPlaying;
+    },
+    setPlaybackRate(rate: number) {
+      this.playbackRate = rate;
     },
     incrementCurrentTime(time: number) {
       this.currentTime += time;
