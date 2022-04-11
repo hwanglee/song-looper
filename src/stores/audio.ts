@@ -16,6 +16,9 @@ export const useAudioStore = defineStore({
     setPlaybackRate(rate: number) {
       this.playbackRate = rate;
     },
+    setCurrentTime(time: number) {
+      this.currentTime = time;
+    },
     incrementCurrentTime(time: number) {
       this.currentTime += time;
 
