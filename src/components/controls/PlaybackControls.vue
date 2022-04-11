@@ -3,8 +3,8 @@
     :focusable="false"
     size="large"
     block
-    v-on:click="toggleIsPlaying()"
-    v-bind:pressed="audioStore.isPlaying"
+    @click="toggleIsPlaying()"
+    :pressed="audioStore.isPlaying"
   >
     {{ audioStore.isPlaying ? "Pause" : "Play" }}
   </n-button>
