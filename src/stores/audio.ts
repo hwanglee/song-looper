@@ -5,8 +5,8 @@ export const useAudioStore = defineStore({
   state: () => ({
     isPlaying: false,
     currentTime: 0,
-    isLooping: false,
     playbackRate: 1,
+    isLooping: false,
   }),
   getters: {},
   actions: {
@@ -18,6 +18,9 @@ export const useAudioStore = defineStore({
     },
     setCurrentTime(time: number) {
       this.currentTime = time;
+    },
+    setIsLooping(isLooping: boolean) {
+      this.isLooping = isLooping;
     },
   },
 });
