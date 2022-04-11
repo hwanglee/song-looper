@@ -7,6 +7,8 @@ export const useAudioStore = defineStore({
     currentTime: 0,
     playbackRate: 1,
     isLooping: false,
+    loopStart: 0,
+    loopEnd: 0,
   }),
   getters: {},
   actions: {
@@ -25,6 +27,22 @@ export const useAudioStore = defineStore({
     setIsLooping(isLooping: boolean) {
       this.isLooping = isLooping;
       console.log(`set is looping: ${this.isLooping}`);
+    },
+    setLoopStart(time: number) {
+      this.loopStart = time;
+      console.log(`set loop start: ${this.loopStart}`);
+
+      if (this.loopStart >= this.loopEnd) {
+        this.isLooping = false;
+      }
+    },
+    setLoopEnd(time: number) {
+      this.loopEnd = time;
+      console.log(`set loop end: ${this.loopEnd}`);
+
+      if (this.loopStart >= this.loopEnd) {
+        this.isLooping = false;
+      }
     },
   },
 });

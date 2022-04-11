@@ -34,7 +34,16 @@ watch(
 );
 
 const onTimeChange = (event: CustomEvent<number>) => {
-  audioStore.setCurrentTime(Number(event));
+  const time = Number(event);
+
+  if (
+    audioStore.isLooping &&
+    (time >= audioStore.loopEnd || time < audioStore.loopStart)
+  ) {
+    audioStore.setCurrentTime(audioStore.loopStart);
+  } else {
+    audioStore.setCurrentTime(time);
+  }
 };
 
 const onPausedChange = (event: CustomEvent<boolean>) => {
