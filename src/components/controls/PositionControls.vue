@@ -1,5 +1,8 @@
 <template>
   <n-space justify="center">
+    <n-button :focusable="false" size="large" @click="setStart">
+      {{ audioStore.isLooping ? "Loop Start" : "Song Start" }}
+    </n-button>
     <div v-for="(btn, index) in buttons" :key="index">
       <n-button
         :focusable="false"
@@ -23,14 +26,23 @@ interface Button {
 }
 
 const buttons = [
-  { caption: "Loop Start", seek: 0 },
   { caption: "-5 sec", seek: -5 },
   { caption: "+5 sec", seek: 5 },
 ];
 
 const audioStore = useAudioStore();
 
+const setStart = () => {
+  audioStore.setCurrentTime(0);
+};
+
 const setSeek = (button: Button) => {
-  audioStore.incrementCurrentTime(button.seek);
+  let newTime = audioStore.currentTime + button.seek;
+
+  if (newTime < 0) {
+    newTime = 0;
+  }
+
+  audioStore.setCurrentTime(newTime);
 };
 </script>

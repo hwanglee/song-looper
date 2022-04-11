@@ -19,12 +19,5 @@ export const useAudioStore = defineStore({
     setCurrentTime(time: number) {
       this.currentTime = time;
     },
-    incrementCurrentTime(time: number) {
-      this.currentTime += time;
-
-      if (this.currentTime < 0) {
-        this.currentTime = 0;
-      }
-    },
   },
 });
