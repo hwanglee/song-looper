@@ -14,6 +14,7 @@
 </template>
 
 <script setup lang="ts">
+import { useAudioStore } from "@/stores/audio";
 import { NButton, NSpace } from "naive-ui";
 
 interface Button {
@@ -27,7 +28,9 @@ const buttons = [
   { caption: "+5 sec", seek: 5 },
 ];
 
+const audioStore = useAudioStore();
+
 const setSeek = (button: Button) => {
-  console.log(button.seek);
+  audioStore.incrementCurrentTime(button.seek);
 };
 </script>

@@ -3,7 +3,7 @@
     theme="dark"
     @vm-current-time-change="onTimeChange"
     @vm-paused-change="onPausedChange"
-    :current-time="time"
+    :current-time="audioStore.currentTime"
     :paused="!audioStore.isPlaying"
     :playback-rate="audioStore.playbackRate"
   >
@@ -16,11 +16,10 @@
 
 <script setup lang="ts">
 import { Player, DefaultUi, Audio } from "@vime/vue-next";
-import { ref, watch } from "vue";
+import { watch } from "vue";
 import { useAudioStore } from "../stores/audio";
 
 const audioStore = useAudioStore();
-const time = ref(0);
 
 const props = defineProps<{
   dataSrc: string;
@@ -30,11 +29,12 @@ watch(
   () => props.dataSrc,
   (selection, prevSelection) => {
     audioStore.setIsPlaying(false);
+    audioStore.setCurrentTime(0);
   }
 );
 
 const onTimeChange = (event: CustomEvent<number>) => {
-  time.value = Number(event);
+  audioStore.setCurrentTime(Number(event));
 };
 
 const onPausedChange = (event: CustomEvent<boolean>) => {
