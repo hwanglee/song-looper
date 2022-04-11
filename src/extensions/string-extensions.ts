@@ -2,7 +2,7 @@ export {};
 declare global {
   export interface String {
     convertToSeconds(): number;
-    formatAsTime(): string;
+    formatAsTime(): string | undefined;
   }
 }
 
@@ -33,8 +33,12 @@ String.prototype.formatAsTime = function (this: string) {
   } else {
     const value = Number(this);
 
-    return (
-      Math.floor(value / 60) + ":" + ("0" + Math.floor(value % 60)).slice(-2)
-    );
+    if (value) {
+      return (
+        Math.floor(value / 60) + ":" + ("0" + Math.floor(value % 60)).slice(-2)
+      );
+    } else {
+      return undefined;
+    }
   }
 };
