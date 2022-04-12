@@ -1,7 +1,31 @@
 export {};
 declare global {
   export interface String {
+    /**
+     * Returns string formatted as seconds.
+     *
+     * @example
+     * "120" will return "120"
+     *
+     * @example
+     * "2:00" will return "120"
+     */
     convertToSeconds(): number;
+    /**
+     * Returns string formatted as time (MM:SS).
+     *
+     * @example
+     * "120" will return "2:00"
+     *
+     * @example
+     * "1:23" will return "1:23"
+     *
+     * @example
+     * "1:231" will return "1:23"
+     *
+     * @example
+     * "1:fm" will return undefined
+     */
     formatAsTime(): string | undefined;
   }
 }
