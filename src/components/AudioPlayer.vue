@@ -36,13 +36,16 @@ watch(
 const onTimeChange = (event: CustomEvent<number>) => {
   const time = Number(event);
 
+  audioStore.setCurrentTime(time);
+
   if (
     audioStore.isLooping &&
     (time >= audioStore.loopEnd || time < audioStore.loopStart)
   ) {
-    audioStore.setCurrentTime(audioStore.loopStart);
-  } else {
-    audioStore.setCurrentTime(time);
+    // FIXME: find better solution than using timeout
+    setTimeout(() => {
+      audioStore.setCurrentTime(audioStore.loopStart);
+    }, 100);
   }
 };
 
