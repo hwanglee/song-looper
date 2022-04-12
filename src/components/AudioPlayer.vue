@@ -34,7 +34,19 @@ watch(
 );
 
 const onTimeChange = (event: CustomEvent<number>) => {
-  audioStore.setCurrentTime(Number(event));
+  const time = Number(event);
+
+  audioStore.setCurrentTime(time);
+
+  if (
+    audioStore.isLooping &&
+    (time >= audioStore.loopEnd || time < audioStore.loopStart)
+  ) {
+    // FIXME: find better solution than using timeout
+    setTimeout(() => {
+      audioStore.setCurrentTime(audioStore.loopStart);
+    }, 100);
+  }
 };
 
 const onPausedChange = (event: CustomEvent<boolean>) => {
