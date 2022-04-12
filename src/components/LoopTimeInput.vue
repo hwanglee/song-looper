@@ -43,7 +43,7 @@ const onChange = (value: string) => {
   emit("change", inputValue.value);
 };
 
-const onClick = (event: Event) => {
+const onClick = () => {
   currentTime.value =
     audioStore.currentTime.toString().formatAsTime() ?? inputValue.value;
   inputValue.value = currentTime.value;
