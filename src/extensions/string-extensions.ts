@@ -9,8 +9,11 @@ declare global {
      *
      * @example
      * "2:00" will return "120"
+     *
+     * @example
+     * "asd" will return undefined
      */
-    convertToSeconds(): number;
+    convertToSeconds(): number | undefined;
     /**
      * Returns string formatted as time (MM:SS).
      *
@@ -32,7 +35,8 @@ declare global {
 
 String.prototype.convertToSeconds = function (this: string) {
   if (!this.includes(":")) {
-    return Number(this);
+    const num = Number(this);
+    return isNaN(num) ? undefined : num;
   }
 
   const split = this.split(":");
