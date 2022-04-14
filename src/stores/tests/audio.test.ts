@@ -1,6 +1,6 @@
 import { useAudioStore } from "../audio";
-import "ts-jest";
 import { createPinia, setActivePinia } from "pinia";
+import "ts-jest";
 
 describe("Audio Store", () => {
   beforeEach(() => {
