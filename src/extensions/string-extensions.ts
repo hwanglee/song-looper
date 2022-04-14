@@ -1,14 +1,42 @@
 export {};
 declare global {
   export interface String {
-    convertToSeconds(): number;
+    /**
+     * Returns string formatted as seconds.
+     *
+     * @example
+     * "120" will return "120"
+     *
+     * @example
+     * "2:00" will return "120"
+     *
+     * @example
+     * "asd" will return undefined
+     */
+    convertToSeconds(): number | undefined;
+    /**
+     * Returns string formatted as time (MM:SS).
+     *
+     * @example
+     * "120" will return "2:00"
+     *
+     * @example
+     * "1:23" will return "1:23"
+     *
+     * @example
+     * "1:231" will return "1:23"
+     *
+     * @example
+     * "1:fm" will return undefined
+     */
     formatAsTime(): string | undefined;
   }
 }
 
 String.prototype.convertToSeconds = function (this: string) {
   if (!this.includes(":")) {
-    return Number(this);
+    const num = Number(this);
+    return isNaN(num) ? undefined : num;
   }
 
   const split = this.split(":");
