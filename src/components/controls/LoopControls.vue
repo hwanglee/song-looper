@@ -36,11 +36,17 @@ audioStore.$subscribe((mutation, state) => {
 });
 
 const onStartChange = (value: string) => {
-  audioStore.setLoopStart(value.convertToSeconds());
+  const seconds = value.convertToSeconds();
+  if (seconds) {
+    audioStore.setLoopStart(seconds);
+  }
 };
 
 const onEndChange = (value: string) => {
-  audioStore.setLoopEnd(value.convertToSeconds());
+  const seconds = value.convertToSeconds();
+  if (seconds) {
+    audioStore.setLoopEnd(seconds);
+  }
 };
 
 const onSwitchUpdate = (value: boolean) => {
