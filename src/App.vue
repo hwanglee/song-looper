@@ -1,7 +1,12 @@
 <template>
   <n-config-provider :theme="theme">
     <div class="fullscreen" :style="background">
-      <n-grid :cols="2" x-gap="50">
+      <n-grid
+        n-grid
+        cols="1 s:1 m:2 l:2 xl:2 2xl:2"
+        responsive="screen"
+        x-gap="50"
+      >
         <n-gi>
           <FilePicker />
         </n-gi>
