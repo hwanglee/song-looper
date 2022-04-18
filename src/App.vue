@@ -46,6 +46,6 @@ const background = {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0vh 30vh 0vh 30vh;
+  padding: 0vh 20vw 0vh 20vw;
 }
 </style>
