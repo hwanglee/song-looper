@@ -48,4 +48,8 @@ const background = {
   justify-content: center;
   padding: 0vh 20vw 0vh 20vw;
 }
+
+.fullwidth {
+  width: 100%;
+}
 </style>
