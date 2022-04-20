@@ -1,5 +1,5 @@
 <template>
-  <n-space :wrap="false">
+  <n-space :wrap="false" size="large">
     <n-form-item label="Loop">
       <n-switch
         size="large"
