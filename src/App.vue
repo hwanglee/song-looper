@@ -48,7 +48,7 @@ const background = {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  row-gap: 20px;
+  row-gap: 10vh;
   column-gap: 5vw;
   margin: 0 20px 0 20px;
   min-width: 0;
