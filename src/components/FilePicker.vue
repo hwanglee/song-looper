@@ -1,7 +1,7 @@
 <template>
   <n-space :size="20" vertical id="filepicker">
     <n-h1>{{ songTitle }}</n-h1>
-    <n-space>
+    <n-space :wrap="false">
       <FileInput @file-change="localFileHandler" />
       <n-form-item label="URL">
         <n-input-group>
