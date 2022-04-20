@@ -1,5 +1,5 @@
 <template>
-  <n-space justify="space-around" size="large" vertical id="filepicker">
+  <n-space :size="20" vertical id="filepicker">
     <n-h1>{{ songTitle }}</n-h1>
     <n-space>
       <FileInput @file-change="localFileHandler" />
