@@ -5,6 +5,7 @@
       <n-form-item label="Select File">
         <FileInput @file-change="localFileHandler" />
       </n-form-item>
+      <!-- FIXME: Find better solution for gap -->
       <n-form-item label="URL" :style="{ width: '90%' }">
         <n-input-group>
           <n-input
