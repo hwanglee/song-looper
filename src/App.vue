@@ -1,25 +1,25 @@
 <template>
   <n-config-provider :theme="theme">
     <div class="fullscreen" :style="background">
-      <n-grid :cols="2" x-gap="50">
-        <n-gi>
+      <div class="container">
+        <div class="content">
           <FilePicker />
-        </n-gi>
-        <n-gi>
+        </div>
+        <div class="content">
           <n-space vertical>
             <LoopControls />
             <PositionControls />
             <PlaybackRateControls />
             <PlaybackControls />
           </n-space>
-        </n-gi>
-      </n-grid>
+        </div>
+      </div>
     </div>
   </n-config-provider>
 </template>
 
 <script setup lang="ts">
-import { NGrid, NSpace, NGi, NConfigProvider } from "naive-ui";
+import { NSpace, NConfigProvider } from "naive-ui";
 import { useOsTheme, darkTheme } from "naive-ui";
 import FilePicker from "./components/FilePicker.vue";
 import PositionControls from "./components/controls/PositionControls.vue";
@@ -41,6 +41,24 @@ const background = {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0vh 30vh 0vh 30vh;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 10vh;
+  column-gap: 5vw;
+  margin: 0 20px 0 20px;
+  min-width: 0;
+}
+
+.content {
+  width: 550px;
+}
+
+.fullwidth {
+  width: 100%;
 }
 </style>

@@ -1,24 +1,34 @@
 <template>
-  <n-space justify="center">
-    <n-button :focusable="false" size="large" @click="setStart">
-      {{ audioStore.isLooping ? "Loop Start" : "Song Start" }}
-    </n-button>
-    <div v-for="(btn, index) in buttons" :key="index">
-      <n-button
-        :focusable="false"
-        size="large"
-        :key="index"
-        @click="setSeek(btn)"
-      >
-        {{ btn.caption }}
-      </n-button>
-    </div>
-  </n-space>
+  <n-form-item label="Position">
+    <n-grid cols="3" x-gap="10">
+      <n-gi>
+        <n-button
+          :focusable="false"
+          size="large"
+          @click="setStart"
+          class="fullwidth"
+        >
+          {{ audioStore.isLooping ? "Loop Start" : "Song Start" }}
+        </n-button>
+      </n-gi>
+      <n-gi v-for="(btn, index) in buttons" :key="index">
+        <n-button
+          :focusable="false"
+          size="large"
+          :key="index"
+          @click="setSeek(btn)"
+          class="fullwidth"
+        >
+          {{ btn.caption }}
+        </n-button>
+      </n-gi>
+    </n-grid>
+  </n-form-item>
 </template>
 
 <script setup lang="ts">
 import { useAudioStore } from "@/stores/audio";
-import { NButton, NSpace } from "naive-ui";
+import { NButton, NGrid, NGi, NFormItem } from "naive-ui";
 
 interface Button {
   caption: string;

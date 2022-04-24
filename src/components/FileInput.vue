@@ -1,9 +1,7 @@
 <template>
-  <n-form-item label="Select File">
-    <n-button :focusable="false" size="large" @click="clickInput">
-      Browse
-    </n-button>
-  </n-form-item>
+  <n-button :focusable="false" size="large" @click="clickInput">
+    Browse
+  </n-button>
   <input
     type="file"
     id="song"
@@ -16,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { NButton, NFormItem } from "naive-ui";
+import { NButton } from "naive-ui";
 import { ref } from "vue";
 
 const emit = defineEmits<{
