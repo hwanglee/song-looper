@@ -49,7 +49,7 @@ onMounted(() => {
 const dataSrc = ref("");
 const songTitle = ref("");
 const remoteUrl = ref(
-  "https://ia801402.us.archive.org/26/items/ttb2022-03-26.mk41v.edtyre/ttb2022-03-26.mk41v.edtyre.s2.t01.mp3"
+  "https://ia902506.us.archive.org/13/items/ttb2022-03-26.mk41v.edtyre/ttb2022-03-26.mk41v.edtyre.s2.t01.mp3"
 );
 
 const remoteFileHandler = async () => {
@@ -57,7 +57,7 @@ const remoteFileHandler = async () => {
     const res = await fetch(remoteUrl.value);
     console.log(res);
     const blob = await res.blob();
-    const file = new File([blob], "Untitled", { type: blob.type });
+    const file = new File([blob], "Untitled", { type: "audio/mpeg" });
 
     handleFile(file);
   } catch (e) {
